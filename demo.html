@@ -1,6 +1,72 @@
 <html>
+    <head>
+        <script>
+            var countryList = ["india","pakistan","afghanistan","khajikistan",
+            "srilanka","america","singapore","iran","uk"];
+        
+            function loadListFromArr(){
+                for(var i=0;i<countryList.length;i++){
+                    var ele = document.createElement("option");
+                    ele.innerText = countryList[i];
+                    parentEle.appendChild(ele);
+                    
+                }
+            }
+        </script>
+    </head>
     <body>
-        <h1>this is a demo html </h1>
-    </body>
-</html>
+        <input id="searchTxt" type="text" value="" onkeyup="getSearchBoxText();"/>
+        <select id="countryOpt">
 
+        </select>
+        <div id="buttonDiv">
+
+        </div>
+    </body>
+    <script>
+        var parentEle= document.getElementById("countryOpt");
+        //parentEle.addEventListener("onkeyup",getSearchBoxText);
+        loadListFromArr();
+        // var ele1 = document.createElement("button");
+        // ele1.innerText="Click Me!";
+        // var x = document.getElementsByTagName("body")[0];
+        // x.appendChild(ele1);
+
+        function getSearchBoxText(){
+            var parentEle= document.getElementById("countryOpt");
+            var searchTxt = document.getElementById("searchTxt").value;
+            console.log("Search String: "+searchTxt);
+            if(searchTxt == ''){
+                parentEle.innerText = "";
+                loadListFromArr();
+            }else{
+                parentEle.innerText = "";
+                for(var i=0;i<countryList.length;i++){
+                    if(countryList[i].substring(0,searchTxt.length) == searchTxt){
+                        var ele = document.createElement("option");
+                        ele.innerText = countryList[i];
+                        parentEle.appendChild(ele);
+                    }
+                }
+            }
+            var listArr = document.getElementsByTagName("option");
+            for(var i=0;i<listArr.length;i++){
+                if(listArr[i].value.substring(0,searchTxt.length) == searchTxt){
+                    console.log(listArr[i].value);
+                }else{
+                    listArr[i]
+                }
+            }
+        }
+            
+    </script>
+</html>
+<!--
+1. get text from search box
+2. find the proper event to get the text from search text box
+3. compare searchText with every item in drop down list filter()
+filter() input : searchbox text string
+            return : boolean/ String (of current list item)
+4. render the new filtered list on the drop down.
+
+-->
