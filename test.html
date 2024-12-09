@@ -30,6 +30,66 @@
             }
 
         </script>
+
+        <script>
+            /*
+            var a=100;
+            {
+				var a=10;
+				let b=11;
+				console.log(a);//10
+                console.log(b);//11
+            }
+            console.log(a);//100?10?
+            console.log(b);//undefined
+            */
+           /*scope chain & lexical env
+            function a(){
+                c();
+                function c(){
+                    console.log(x);//1.undefined
+                }
+            }
+            a();
+            var x=10;
+            console.log(x);//2.10
+
+            */
+            /* closure 
+            function a(){
+                var x =11;
+                function b(){
+                    console.log(x);
+                }
+
+                return b;
+            }
+            var c = a();
+            console.log(c);
+            c();
+            */
+            /* setTimeout() */
+            function a(){
+                /* syntax-1
+                var k=100;
+                setTimeout(myGreeting,5000);
+                console.log("Hello JS!")
+
+                function myGreeting(){
+                    console.log(k);
+                }
+
+                */
+
+                /* syntax-2 */
+                var k=100;
+                setTimeout(function myGreeting(){
+                    console.log(k);
+                },5000);
+                console.log("Hello JS!");
+            }
+
+        </script>
     </head>
     <body>
 
